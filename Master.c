@@ -1,6 +1,6 @@
 #include<stdio.h>
 int main(){
-  int Base,BaseMayor,BaseMenor,Altura;
+  int Base,BaseMayor,BaseMenor,Altura,Largo,ancho;
   int op;
   float area;
   printf("ingrese que quiere calcular\n");
@@ -27,6 +27,11 @@ int main(){
   		break;
   	case 3:
   		printf("Seleccionado Area de un rectangulo \n");
+        printf("ingrese lado menor \n"); scanf("%d",&Largo);
+  		printf("ingrese lado mayor \n"); scanf("%d",&ancho);
+        area=Largo*ancho;
+        printf("El area del rectangulo es de %.2f \n",area);
   		break;
   }
+  return 0;
 }

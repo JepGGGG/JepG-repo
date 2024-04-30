@@ -33,5 +33,6 @@ int main(){
         printf("El area del rectangulo es de %.2f \n",area);
   		break;
   }
+  printf("Muchas gracias por utilizar\n");
   return 0;
 }

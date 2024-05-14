@@ -8,7 +8,7 @@ bool validar_credenciales(char nombre[], char grupo[]) {
 
 // Función para mostrar el mensaje de bienvenida
 void mostrar_mensaje_bienvenida(char nombre[]) {
-  printf("\n¡Bienvenido al sistema, %s!\n", nombre);
+  printf("Bienvenido al sistema, %s!\n", nombre);
 }
 
 // Función para calcular la factura
@@ -18,11 +18,11 @@ void calcular_factura() {
   bool continuar = true;
 
   for (i = 0; continuar; i++) { // Declaración al inicio del ciclo
-    printf("\nIngrese la cantidad del producto %d (ingrese 0 para terminar): ", i + 1);
+    printf("Ingrese la cantidad del producto %d (ingrese 0 para terminar): ", i + 1);
     scanf("%d", &cantidad_articulo);
 
     if (cantidad_articulo == 0) {
-      printf("\nIngresó un 0, finalizando la factura.\n");
+      printf("Ingrese un 0, finalizando la factura.\n");
       continuar = false;
     } else {
       printf("Ingrese el precio unitario del producto %d: ", i + 1);
@@ -31,17 +31,17 @@ void calcular_factura() {
       if (cantidad_articulo > 0 && precio_unidad > 0) {
         total += cantidad_articulo * precio_unidad;
       } else {
-        printf("Error: La cantidad y el precio deben ser números positivos.\n");
+        printf("Error: La cantidad y el precio deben ser numeros positivos.\n");
         i--; // Se resta la iteración para evitar un error en la suma
       }
     }
   }
 
-  printf("\nEl importe total de la factura es: %d\n", total);
+  printf("El importe total de la factura es: %d\n", total);
 }
 
 int main() {
-  char nombre[20]; // Declaración al inicio de la función
+  char nombre[20]; 
   char grupo[10];
   int intentos = 0;
 
@@ -58,11 +58,11 @@ int main() {
       calcular_factura();
 
       char respuesta;
-      printf("\n¿Desea realizar otra factura? (s/n): ");
+      printf("Desea realizar otra factura? (s/n): ");
       scanf(" %c", &respuesta);
 
       if (respuesta != 's' && respuesta != 'S') {
-        printf("\n¡Gracias por utilizar el sistema!\n");
+        printf("Gracias por utilizar el sistema %s!\n", nombre);
       }
     } else {
       intentos++;

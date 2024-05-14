@@ -1,62 +1,76 @@
 #include <stdio.h>
+
+// Función para validar las credenciales del usuario
+bool validar_credenciales(char nombre[], char grupo[]) {
+  // Se compara el nombre y grupo ingresados con los valores correctos
+  return (strcmp(nombre, "JepG") == 0 && strcmp(grupo, "2bmpg") == 0);
+}
+
+// Función para mostrar el mensaje de bienvenida
+void mostrar_mensaje_bienvenida(char nombre[]) {
+  printf("\n¡Bienvenido al sistema, %s!\n", nombre);
+}
+
+// Función para calcular la factura
+void calcular_factura() {
+  int total = 0, cantidad_articulo, precio_unidad, i;
+  bool continuar = true;
+
+  for (i = 0; continuar; i++) {
+    printf("\nIngrese la cantidad del producto %d (ingrese 0 para terminar): ", i + 1);
+    scanf("%d", &cantidad_articulo);
+
+    if (cantidad_articulo == 0) {
+      printf("\nIngresó un 0, finalizando la factura.\n");
+      continuar = false;
+    } else {
+      printf("Ingrese el precio unitario del producto %d: ", i + 1);
+      scanf("%d", &precio_unidad);
+
+      if (cantidad_articulo > 0 && precio_unidad > 0) {
+        total += cantidad_articulo * precio_unidad;
+      } else {
+        printf("Error: La cantidad y el precio deben ser números positivos.\n");
+        i--; // Se resta la iteración para evitar un error en la suma
+      }
+    }
+  }
+
+  printf("\nEl importe total de la factura es: %d\n", total);
+}
+
 int main() {
   char nombre[20];
   char grupo[10];
   int intentos = 0;
-  char continuar;
-  int cantidad_productos, total = 0, cantidad_articulo, precio_unidad, i;
+
   do {
     printf("Ingrese su nombre: ");
     scanf("%s", nombre);
+
     printf("Ingrese su grupo del cb: ");
     scanf("%s", grupo);
 
-    if (strcmp(nombre, "JepG") == 0 && strcmp(grupo, "2bmpg") == 0) {
-      printf("Bienvenido al sistema %s!\n", nombre); 
+    if (validar_credenciales(nombre, grupo)) {
+      mostrar_mensaje_bienvenida(nombre);
 
-      printf("\nIngrese el número de productos: ");
-      scanf("%d", &cantidad_productos);
+      calcular_factura();
 
-      for (i = 0; i < cantidad_productos; i++) {
-        printf("\nIngrese la cantidad del producto %d: ", i + 1);
-        scanf("%d", &cantidad_articulo);
-
-        if (cantidad_articulo == 0) { 
-          printf("\nIngreso un 0, finalizando la factura.\n");
-          break; 
-        }
-
-        printf("Ingrese el precio unitario del producto %d: ", i + 1);
-        scanf("%d", &precio_unidad);
-
-        if (cantidad_articulo > 0 && precio_unidad > 0) {
-          total += cantidad_articulo * precio_unidad;
-        } else {
-          printf("Error: La cantidad y el precio deben ser números positivos.\n");
-          i--; 
-        }
-      }
-
-      if (cantidad_articulo != 0) { 
-        printf("El importe total de la factura es: %d por tus %d productos.\n", total, cantidad_productos);
-      }
-
+      char respuesta;
       printf("\n¿Desea realizar otra factura? (s/n): ");
-      scanf(" %c", &continuar);
+      scanf(" %c", &respuesta);
 
-      if (continuar != 's' && continuar != 'S') {
+      if (respuesta != 's' && respuesta != 'S') {
         printf("\n¡Gracias por utilizar el sistema!\n");
-        break; 
       }
     } else {
       intentos++;
       printf("Nombre o grupo incorrectos, Intentos restantes: %d\n", 3 - intentos);
     }
-
   } while (intentos < 3);
 
   if (intentos == 3) {
-    printf(" ha superado el número máximo de intentos permitidos.\n");
+    printf("Ha superado el número máximo de intentos permitidos.\n");
   }
 
   return 0;

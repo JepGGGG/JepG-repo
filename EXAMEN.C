@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<stdbool.h>
 // Función para validar las credenciales del usuario
 bool validar_credenciales(char nombre[], char grupo[]) {
   // Se compara el nombre y grupo ingresados con los valores correctos
@@ -13,10 +13,11 @@ void mostrar_mensaje_bienvenida(char nombre[]) {
 
 // Función para calcular la factura
 void calcular_factura() {
-  int total = 0, cantidad_articulo, precio_unidad, i;
+  int total = 0; // Declaración al inicio de la función
+  int cantidad_articulo, precio_unidad, i;
   bool continuar = true;
 
-  for (i = 0; continuar; i++) {
+  for (i = 0; continuar; i++) { // Declaración al inicio del ciclo
     printf("\nIngrese la cantidad del producto %d (ingrese 0 para terminar): ", i + 1);
     scanf("%d", &cantidad_articulo);
 
@@ -40,7 +41,7 @@ void calcular_factura() {
 }
 
 int main() {
-  char nombre[20];
+  char nombre[20]; // Declaración al inicio de la función
   char grupo[10];
   int intentos = 0;
 

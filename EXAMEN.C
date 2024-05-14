@@ -10,7 +10,7 @@ int main() {
     printf("Ingrese su contraseña: ");
     scanf("%s", contrasena);
 
-    if (strcmp(usuario, "root") == 0 && strcmp(contrasena, "1234") == 0) {
+    if (strcmp(usuario, "JepG") == 0 && strcmp(contrasena, "2bmpg") == 0) {
       printf("\n¡Bienvenido al sistema!\n");
       break;
     } else {

@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include<stdbool.h>
-// Función para validar las credenciales del usuario
+
 bool validar_credenciales(char nombre[], char grupo[]) {
-  // Se compara el nombre y grupo ingresados con los valores correctos
+
   return (strcmp(nombre, "JepG") == 0 && strcmp(grupo, "2bmpg") == 0);
 }
 
-// Función para mostrar el mensaje de bienvenida
+
 void mostrar_mensaje_bienvenida(char nombre[]) {
   printf("Bienvenido al sistema, %s!\n", nombre);
 }
 
-// Función para calcular la factura
+
 void calcular_factura() {
   int total = 0; // Declaración al inicio de la función
   int cantidad_articulo, precio_unidad, i;
